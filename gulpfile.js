@@ -115,6 +115,8 @@ const useref = () => {
             minifyCSS: true,
             minifyJS: true
         })))
+        .pipe(plugins.if(/\.(js|css)$/, plugins.rev()))
+        .pipe(plugins.revReplace())
         .pipe(dest('dist'))
 };
 
